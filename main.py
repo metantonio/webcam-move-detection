@@ -90,8 +90,9 @@ while(video.isOpened()):
             time.append(datetime.now())
 
         # Appending End time of motion
-        if motion_list[-1] == 0 and motion_list[-2] == 1:
+        #if motion_list[-1] == 0 and motion_list[-2] == 1:
             #time.append(datetime.now())
+            
 
         # Displaying image in gray_scale
         cv2.imshow("Gray Frame", gray)
@@ -111,7 +112,7 @@ while(video.isOpened()):
         # if q entered whole process will stop
         if key == ord('q'):
             # if something is movingthen it append the end time of movement
-            if motion == 1:
+            #if motion == 1:
                 #time.append(datetime.now())
             break
 

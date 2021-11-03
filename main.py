@@ -13,7 +13,7 @@ static_back = None
 motion_list = [ None, None ]
 
 # Time of movement
-time = []
+#time = []
 
 # Initializing DataFrame, one column is start
 # time and other column is end time
@@ -36,7 +36,7 @@ def screenshot(second):
 while(video.isOpened()):
     while True:
         # wait 1 second until next move detection
-        #time.sleep(1)
+        time.sleep(1)
         sec = sec + 2
         # Reading frame(image) from video
         check, frame = video.read()
@@ -62,8 +62,8 @@ while(video.isOpened()):
         diff_frame = cv2.absdiff(static_back, gray)
 
         # If change in between static background and
-        # current frame is greater than 70 it will show white color(255)
-        thresh_frame = cv2.threshold(diff_frame, 70, 255, cv2.THRESH_BINARY)[1]
+        # current frame is greater than 30 it will show white color(255)
+        thresh_frame = cv2.threshold(diff_frame, 30, 255, cv2.THRESH_BINARY)[1]
         thresh_frame = cv2.dilate(thresh_frame, None, iterations = 2)
 
         # Finding contour of moving object
@@ -91,7 +91,7 @@ while(video.isOpened()):
 
         # Appending End time of motion
         if motion_list[-1] == 0 and motion_list[-2] == 1:
-            time.append(datetime.now())
+            #time.append(datetime.now())
 
         # Displaying image in gray_scale
         cv2.imshow("Gray Frame", gray)
@@ -101,7 +101,7 @@ while(video.isOpened()):
         cv2.imshow("Difference Frame", diff_frame)
 
         # Displaying the black and white image in which if
-        # intensity difference greater than 70 it will appear white
+        # intensity difference greater than 30 it will appear white
         cv2.imshow("Threshold Frame", thresh_frame)
 
         # Displaying color frame with contour of motion of object
@@ -112,7 +112,7 @@ while(video.isOpened()):
         if key == ord('q'):
             # if something is movingthen it append the end time of movement
             if motion == 1:
-                time.append(datetime.now())
+                #time.append(datetime.now())
             break
 
     # Appending time of motion in DataFrame
@@ -123,7 +123,7 @@ while(video.isOpened()):
     #df.to_csv("Time_of_movements.csv")
 
     video.release()
-
+    
     # Destroying all the windows
     cv2.destroyAllWindows()
 

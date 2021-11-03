@@ -35,7 +35,7 @@ def screenshot(second):
 # Infinite while loop to treat stack of image as video
 while True:
     # wait 1 second until next move detection
-    time.sleep(1)
+    #time.sleep(1)
     sec = sec + 2
     # Reading frame(image) from video
     check, frame = video.read()
@@ -61,8 +61,8 @@ while True:
     diff_frame = cv2.absdiff(static_back, gray)
 
     # If change in between static background and
-    # current frame is greater than 50 it will show white color(255)
-    thresh_frame = cv2.threshold(diff_frame, 50, 255, cv2.THRESH_BINARY)[1]
+    # current frame is greater than 70 it will show white color(255)
+    thresh_frame = cv2.threshold(diff_frame, 70, 255, cv2.THRESH_BINARY)[1]
     thresh_frame = cv2.dilate(thresh_frame, None, iterations = 2)
 
     # Finding contour of moving object
@@ -100,7 +100,7 @@ while True:
     cv2.imshow("Difference Frame", diff_frame)
 
     # Displaying the black and white image in which if
-    # intensity difference greater than 30 it will appear white
+    # intensity difference greater than 70 it will appear white
     cv2.imshow("Threshold Frame", thresh_frame)
 
     # Displaying color frame with contour of motion of object

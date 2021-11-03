@@ -36,8 +36,8 @@ def screenshot(second):
 while(video.isOpened()):
     while True:
         # wait 1 second until next move detection
-        time.sleep(1)
-        sec = sec + 2
+        #time.sleep(1)
+        sec = sec + 1
         # Reading frame(image) from video
         check, frame = video.read()
 

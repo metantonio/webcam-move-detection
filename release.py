@@ -12,20 +12,18 @@ static_back = None
 # List when any moving object appear
 motion_list = [ None, None ]
 
-# Time of movement
-time = []
-
-# Initializing DataFrame, one column is start
-# time and other column is end time
-df = pandas.DataFrame(columns = ["Start", "End"])
-
-# Capturing video and initializing camera, change index to find your camera
-video = cv2.VideoCapture(1)
-video2 = cv2.VideoCapture(0)
-
-video.release()
-video2.release()
-
-# Destroying all the windows
-cv2.destroyAllWindows()
+cap = cv2.VideoCapture(1)
+while(cap.isOpened()):
+      
+    while True:
+          
+        ret, img = cap.read()
+        cv2.imshow('img', img)
+        if cv2.waitKey(30) & 0xff == ord('q'):
+            break
+              
+    cap.release()
+    cv2.destroyAllWindows()
+else:
+    print("Alert ! Camera disconnected")
 

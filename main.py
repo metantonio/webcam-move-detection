@@ -27,8 +27,9 @@ sec=0
 # Created function to take screeshots of camera
 def screenshot(second):
     global video ## take video variable declared before
-    cv2.imwrite("screenshot"+ str(second)+".png", video.read()[1]) # shows the screenshot directly
+    cv2.imwrite("screenshot"+ str(second)+".png", video.read()[1],[cv2.IMWRITE_JPEG_QUALITY, 50]) # shows the screenshot directly
     #cv2.imwrite('screenshot.png',cam.read()[1]) # or saves it to disk
+    
 
 
 
@@ -86,8 +87,8 @@ while(video.isOpened()):
         motion_list = motion_list[-2:]
 
         # Appending Start time of motion
-        if motion_list[-1] == 1 and motion_list[-2] == 0:
-            time.append(datetime.now())
+        #if motion_list[-1] == 1 and motion_list[-2] == 0:
+            #time.append(datetime.now())
 
         # Appending End time of motion
         #if motion_list[-1] == 0 and motion_list[-2] == 1:
